@@ -1,4 +1,4 @@
-# Дипломный проект Movies Collection (<Backend>)
+# Дипломный проект Movies Collection (Backend)
 
 ## Описание
 
