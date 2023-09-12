@@ -48,7 +48,7 @@ module.exports.addMovie = (req, res, next) => {
     });
 };
 
-module.exports.getCards = (req, res, next) => {
+module.exports.getMovies = (req, res, next) => {
   Movie.find({ owner: req.user._id })
     .then((cards) => res
       .status(HTTP_STATUS_OK)
@@ -56,7 +56,7 @@ module.exports.getCards = (req, res, next) => {
     .catch(next);
 };
 
-module.exports.deleteCard = (req, res, next) => {
+module.exports.deleteMovie = (req, res, next) => {
   Movie.findById(req.params.movieId)
     .orFail(() => next(new NotFoundError(`Фильм с _id: ${req.params.movieId} не найден.`)))
     .then((card) => {

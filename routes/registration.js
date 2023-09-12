@@ -8,7 +8,7 @@ router.post('/', celebrate({
     .keys({
       name: Joi
         .string()
-        .require()
+        .required()
         .min(2)
         .max(30),
       email: Joi
