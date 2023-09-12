@@ -15,8 +15,8 @@ const app = express();
 const options = {
   origin: [
     'http://localhost:3000',
-    'http://kmv-movies-diplom.nomoredomainsicu.ru',
-    'https://kmv-movies-diplom.nomoredomainsicu.ru',
+    'http://fr-kmv-movies-diplom.nomoredomainsicu.ru',
+    'https://fr-kmv-movies-diplom.nomoredomainsicu.ru',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
