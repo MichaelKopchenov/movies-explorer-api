@@ -18,9 +18,14 @@
 * [Ссылка на валидотор БЭМ](https://nglazov.github.io/bem-validator-page/)
 * [Ссылка на бесплатные шрифты](https://fonts.google.com/?query=Inter)
 
-Ниже указана ссылка на GitHub Pages
+Ниже указана ссылка на репозиторий GitHub
 
 * [Movies Collection ©2023. Копченов Михаил Викторович](https://github.com/MichaelKopchenov/movies-explorer-api/tree/level-1)
+
+Ниже указана ссылка ев сервер
+
+* [Backend](http://kmv-movies-diplom.nomoredomainsicu.ru)
+
 
 ## Директории
 

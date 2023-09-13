@@ -34,7 +34,7 @@ const movieSchema = new Schema({
       message: 'Введите URL',
     },
   },
-  trailerlink: {
+  trailerLink: {
     type: String,
     required: [true, 'Поле должно быть заполнено'],
     validate: {
