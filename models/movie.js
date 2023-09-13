@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const urlValidator = require('../utils/constants');
+const { urlValidator } = require('../utils/constants');
 
 const { Schema } = mongoose;
 

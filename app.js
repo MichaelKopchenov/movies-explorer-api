@@ -5,7 +5,7 @@ const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const { errors } = require('celebrate');
-const { limiter } = require('./utils/constants');
+const rateLimit = require('express-rate-limit');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const InternalServerError = require('./errors/IternalServerError');
 
@@ -35,6 +35,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 mongoose.connect(DATABASE);
 
 app.use(requestLogger);
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+});
 
 app.use(limiter);
 
