@@ -1,11 +1,11 @@
 require('dotenv').config();
 const express = require('express');
-const rateLimit = require('express-rate-limit');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const { errors } = require('celebrate');
+const { limiter } = require('./utils/constants');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const InternalServerError = require('./errors/IternalServerError');
 
@@ -27,11 +27,6 @@ const options = {
 
 app.use('*', cors(options));
 
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
-});
-
 app.use(helmet());
 
 app.use(bodyParser.json());
@@ -41,11 +36,11 @@ mongoose.connect(DATABASE);
 
 app.use(requestLogger);
 
+app.use(limiter);
+
 app.use('/', require('./routes/index'));
 
 app.use(errorLogger);
-
-app.use(limiter);
 
 app.use(errors());
 
