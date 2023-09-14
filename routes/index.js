@@ -6,9 +6,11 @@ const routerOfRegistration = require('./registration');
 const routerOfLogin = require('./login');
 const NotFoundError = require('../errors/NotFoundError');
 
+const { NOT_FOUND_MESSAGE, SERVER_CRASH_MESSAGE } = require('../utils/errorConstants');
+
 router.get('/crash-test', () => {
   setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
+    throw new Error(SERVER_CRASH_MESSAGE);
   }, 0);
 });
 
@@ -21,7 +23,7 @@ router.use('/users', routerOfUsers);
 router.use('/movies', routerOfMovies);
 
 router.use('*', (req, res, next) => {
-  next(new NotFoundError('Страница не найдена.'));
+  next(new NotFoundError(NOT_FOUND_MESSAGE));
 });
 
 module.exports = router;

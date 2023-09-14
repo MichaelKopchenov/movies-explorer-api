@@ -7,4 +7,32 @@ const limiter = rateLimit({
   max: 100,
 });
 
-module.exports = { urlValidator, limiter };
+const {
+  DATABASE = 'mongodb://127.0.0.1:27017/bitfilmsdb',
+  PORT = 3000,
+  NODE_ENV,
+  SOME_SECRET_KEY,
+} = process.env;
+
+const corsOptions = {
+  origin: [
+    'http://localhost:3000',
+    'http://fr-kmv-movies-diplom.nomoredomainsicu.ru',
+    'https://fr-kmv-movies-diplom.nomoredomainsicu.ru',
+  ],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
+  credentials: true,
+};
+
+module.exports = {
+  urlValidator,
+  limiter,
+  DATABASE,
+  PORT,
+  corsOptions,
+  NODE_ENV,
+  SOME_SECRET_KEY,
+};

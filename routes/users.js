@@ -1,26 +1,13 @@
 const router = require('express').Router();
-const { celebrate, Joi } = require('celebrate');
 const {
   editDataOfUser,
   dataOfUser,
 } = require('../controllers/users');
 
+const { checkNewInfoUser } = require('../utils/validators/validatorOfUser');
+
 router.get('/me', dataOfUser);
 
-router.patch('/me', celebrate({
-  body: Joi
-    .object()
-    .keys({
-      name: Joi
-        .string()
-        .min(2)
-        .max(30)
-        .required(),
-      email: Joi
-        .string()
-        .required()
-        .email(),
-    }),
-}), editDataOfUser);
+router.patch('/me', checkNewInfoUser, editDataOfUser);
 
 module.exports = router;

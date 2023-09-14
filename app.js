@@ -9,23 +9,11 @@ const { limiter } = require('./utils/constants');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const InternalServerError = require('./errors/IternalServerError');
 
-const { PORT = 3000, DATABASE = 'mongodb://127.0.0.1:27017/bitfilmsdb' } = process.env;
+const { PORT, DATABASE, corsOptions } = require('./utils/constants');
+
 const app = express();
 
-const options = {
-  origin: [
-    'http://localhost:3000',
-    'http://fr-kmv-movies-diplom.nomoredomainsicu.ru',
-    'https://fr-kmv-movies-diplom.nomoredomainsicu.ru',
-  ],
-  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
-  credentials: true,
-};
-
-app.use('*', cors(options));
+app.use('*', cors(corsOptions));
 
 app.use(helmet());
 

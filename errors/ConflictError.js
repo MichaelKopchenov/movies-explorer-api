@@ -1,8 +1,8 @@
-const { HTTP_STATUS_CONFLICT } = require('http2').constants;
+const { CONFLICT_409 } = require('../utils/errorConstants');
 
 module.exports = class NotfoundError extends Error {
   constructor(message) {
     super(message);
-    this.statusCode = HTTP_STATUS_CONFLICT;
+    this.statusCode = CONFLICT_409;
   }
 };
